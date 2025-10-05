@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: tracker_db1
+      POSTGRES_USER: trac_user1
+      POSTGRES_PASSWORD: 123456
+#    ports:
+#      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    # или image: your-image-name
+    ports:
+      - "8000:8000"  # или другой порт
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://trac_user1:123456@db:5432/tracker_db1
+    # volumes:
+    #   - .:/app  # если нужно монтировать код
+
+volumes:
+  postgres_data:
