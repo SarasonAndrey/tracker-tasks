@@ -32,6 +32,7 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "Task Tracker API",
     "DESCRIPTION": "API для управления задачами сотрудников",
     "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
 
 MIDDLEWARE = [

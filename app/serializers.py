@@ -6,6 +6,8 @@ from .models import Employee, Task
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
+    task_count = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Employee
         fields = "__all__"
